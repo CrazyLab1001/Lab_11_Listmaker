@@ -9,14 +9,16 @@ public class Main {
         String addToList = "";
         int spotOnList = 0;
         ArrayList<String> userList = new ArrayList<>();
+        Scanner in = new Scanner(System.in);
         do {
-            Scanner in = new Scanner(System.in);
-            userChoice = SafeInput.getRegEXString(in, "Pick an option: Add, Delete, Insert, Print, or Quit. [A/D/I/P/Q]", "ADIPQ");
-            // regex list is only in caps since the SafeInput converts them to uppercase (for simplicity)
+            display(userList);
+            userChoice = SafeInput.getRegEXString(in, "Pick an option: Add, Delete, Insert, Print, or Quit. [A/D/I/P/Q]", "[ADIPQ]");
+            // regex choices are only in caps since the SafeInput converts them to uppercase (for simplicity)
             switch (userChoice) {
               case "A":
                 addToList = SafeInput.getNonZeroLenString(in, "What would you like to add to the list?");
                 userList.add(addToList);
+                  System.out.println(addToList + " was added to the list!");
                 break;
                 case "D":
                     spotOnList = SafeInput.getRangedInt(in, "Which spot on the list would you like to delete?", 1, (userList.size() + 1));
@@ -24,6 +26,7 @@ public class Main {
                     confirmChoice = SafeInput.getYNConfirm(in, "Delete " + userList.get(spotOnList) + "?");
                     if (confirmChoice == true)
                     { userList.remove(spotOnList);
+                        System.out.println("Officially deleted!");
                         break;}
                     else {
                         System.out.println("Nevermind then!");
@@ -34,9 +37,11 @@ public class Main {
                     spotOnList--;
                     addToList = SafeInput.getNonZeroLenString(in, "What would you like to insert to the list?");
                     userList.add(spotOnList,addToList);
+                    System.out.println("Inserted!");
                     break;
                 case "P":
                     display(userList);
+                    System.out.println("");
                     break;
                 default:
                     confirmChoice = SafeInput.getYNConfirm(in, "Are you sure you want to quit?");
