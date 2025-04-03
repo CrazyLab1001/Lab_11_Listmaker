@@ -10,6 +10,7 @@ public class Main {
         int spotOnList = 0;
         ArrayList<String> userList = new ArrayList<>();
         Scanner in = new Scanner(System.in);
+        System.out.println("Make a list!");
         do {
             display(userList);
             userChoice = SafeInput.getRegEXString(in, "Pick an option: Add, Delete, Insert, Print, or Quit. [A/D/I/P/Q]", "[ADIPQ]");
