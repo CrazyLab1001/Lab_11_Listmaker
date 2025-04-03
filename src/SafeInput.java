@@ -132,6 +132,7 @@ public class SafeInput {
             }
         } while (!done);
         return value; }
+
     public static String prettyPrettyHeader(String message){
         int messageLength = message.length();
         int spaceForCentering = (60 - messageLength - 6);
